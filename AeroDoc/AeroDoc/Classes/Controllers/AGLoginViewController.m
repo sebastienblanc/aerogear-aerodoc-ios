@@ -22,7 +22,7 @@
 #import "AGMyLeadsViewController.h"
 #import "AeroDocAPIClient.h"
 #import "AGDeviceRegistration.h"
-
+#import <CoreLocation/CoreLocation.h>
 #import "AGStatus.h"
 
 @implementation AGLoginViewController {
@@ -35,6 +35,7 @@
 
 @synthesize deviceToken = _deviceToken;
 @synthesize tabController = _tabController;
+
 
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -92,8 +93,7 @@
     
     // load saved username/password
     [self load];
-    
-    DLog(@"AGLoginViewController end viewDidLoad");
+      DLog(@"AGLoginViewController end viewDidLoad");
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -123,6 +123,7 @@
 // for push notification
 //--------------------------------------------------------------------
 - (IBAction)login:(id)sender {
+ 
     if (_username.text == nil || _password.text == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
                                                         message:@"Please enter your username and password!"
@@ -144,7 +145,7 @@
 
         // a successful login means we can trigger the device registration
         // against the AeroGear UnifiedPush Server:
-        [self deviceRegistration];
+        //[self deviceRegistration];
         [self initUINavigation];
     } failure:^(NSError *error) {
         ALog(@"An error has occured during login! \n%@", error);
@@ -272,5 +273,17 @@
     [defaults setObject:_username.text forKey:@"username"];
     [defaults setObject:_password.text forKey:@"password"];
 }
+
+- (CLLocationCoordinate2D)getLocation {
+   CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+   //locationManager.delegate = self;
+   locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+   locationManager.distanceFilter = kCLDistanceFilterNone;
+   [locationManager startUpdatingLocation];
+   CLLocation *location = [locationManager location];
+   CLLocationCoordinate2D coordinate = [location coordinate];
+  return coordinate;
+}
+
 
 @end

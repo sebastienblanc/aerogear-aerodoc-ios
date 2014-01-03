@@ -19,6 +19,7 @@
 #import "AGLeadsViewController.h"
 #import "AGLeadViewController.h"
 #import "AeroDocAPIClient.h"
+#import <CoreLocation/CoreLocation.h>
 #import "AGLead.h"
 #import "LeadCell.h"
 #import "AGStatus.h"
@@ -29,6 +30,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = 100; // whenever we move
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+    [locationManager startUpdatingLocation];
     self.view.backgroundColor = [UIColor clearColor];
     
     // set up navigation button items
@@ -47,6 +53,28 @@
     [self displayLeads];
 }
 
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    int degrees = newLocation.coordinate.latitude;
+    double decimal = fabs(newLocation.coordinate.latitude - degrees);
+    int minutes = decimal * 60;
+    double seconds = decimal * 3600 - minutes * 60;
+    NSString *lat = [NSString stringWithFormat:@"%d° %d' %1.4f\"",
+                     degrees, minutes, seconds];
+        degrees = newLocation.coordinate.longitude;
+    decimal = fabs(newLocation.coordinate.longitude - degrees);
+    minutes = decimal * 60;
+    seconds = decimal * 3600 - minutes * 60;
+    NSString *longt = [NSString stringWithFormat:@"%d° %d' %1.4f\"",
+                       degrees, minutes, seconds];
+    
+    NSLog(@"*dLatitude : %@", lat);
+    NSLog(@"*dLongitude : %@",longt);
+    //longLabel.text = longt;
+}
+
 - (void)viewDidUnload {
     [super viewDidUnload];
     
@@ -57,20 +85,17 @@
      removeObserver:self name:@"LeadAcceptedNotification" object:nil];
 }
 
+
+
 - (void) displayLeads {
+    
     [[AeroDocAPIClient sharedInstance] fetchLeads:^(NSMutableArray *leads) {
         _leads = leads;
               
         [self.tableView reloadData];
     
     } failure:^(NSError *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                        message:[error localizedDescription]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Bummer"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }];
+        }];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

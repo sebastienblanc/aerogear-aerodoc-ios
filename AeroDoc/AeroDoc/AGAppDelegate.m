@@ -20,11 +20,11 @@
 #import "AGAppDelegate.h"
 
 #import "AeroGearPush.h"
-
 @implementation AGAppDelegate
 
 @synthesize window = _window;
 @synthesize viewController;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -48,6 +48,7 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
+
 
 #pragma mark - Push Notification handling
 

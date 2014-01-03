@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4389E64F1836CE4700D420B9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4389E64E1836CE4600D420B9 /* CoreLocation.framework */; };
 		4810B5CC17C3AB8D00E72BFD /* AeroDoc-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4810B5CB17C3AB8D00E72BFD /* AeroDoc-Info.plist */; };
 		4810B5D017C3ACF700E72BFD /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 4810B5CF17C3ACF700E72BFD /* ic_launcher.png */; };
 		4810B5D217C3AD5100E72BFD /* ic_launcher_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 4810B5D117C3AD5100E72BFD /* ic_launcher_114.png */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		3ED1957D45914DBAA7632452 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4389E64E1836CE4600D420B9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4810B5CB17C3AB8D00E72BFD /* AeroDoc-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AeroDoc-Info.plist"; sourceTree = "<group>"; };
 		4810B5CF17C3ACF700E72BFD /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = ../ic_launcher.png; sourceTree = "<group>"; };
 		4810B5D117C3AD5100E72BFD /* ic_launcher_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher_114.png; path = ../ic_launcher_114.png; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				481BE86E176F155A00960BDF /* UIKit.framework in Frameworks */,
+				4389E64F1836CE4700D420B9 /* CoreLocation.framework in Frameworks */,
 				481BE870176F155A00960BDF /* Foundation.framework in Frameworks */,
 				481BE872176F155A00960BDF /* CoreGraphics.framework in Frameworks */,
 				CCB432686BC74882B5C55932 /* libPods.a in Frameworks */,
@@ -165,6 +168,7 @@
 		481BE86C176F155A00960BDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4389E64E1836CE4600D420B9 /* CoreLocation.framework */,
 				481BE86D176F155A00960BDF /* UIKit.framework */,
 				481BE86F176F155A00960BDF /* Foundation.framework */,
 				481BE871176F155A00960BDF /* CoreGraphics.framework */,
@@ -532,7 +536,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 			};
@@ -556,7 +560,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
@@ -571,9 +575,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
 				INFOPLIST_FILE = "AeroDoc/AeroDoc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = AeroDoc;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -585,9 +590,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
 				INFOPLIST_FILE = "AeroDoc/AeroDoc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = AeroDoc;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

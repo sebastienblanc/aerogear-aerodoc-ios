@@ -18,8 +18,11 @@
 #import <UIKit/UIKit.h>
 #import "AGLeadViewController.h"
 #import "AGLocationViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface AGLeadsViewController : UITableViewController <AGLeadActionDelegate, AGLocationActionDelegate, UIActionSheetDelegate>
+@interface AGLeadsViewController : UITableViewController <AGLeadActionDelegate, AGLocationActionDelegate, UIActionSheetDelegate, CLLocationManagerDelegate>{
+    CLLocationManager *locationManager;
+  }
 @property(nonatomic, strong) NSMutableArray *leads;
 - (void) displayLeads;
 @end
